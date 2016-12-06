@@ -351,6 +351,8 @@ var msg = [];
               id: appId
             }
 
+
+
             debug('Trying to install: ' + appName.yellow);
             Matrix.service.manager.stop(appName, function (err) {
               Matrix.service.manager.install(installOptions, function (err) {
@@ -363,6 +365,38 @@ var msg = [];
           debug('Empty app install triggered');
         }
       });
+
+      //App install update
+      Matrix.service.firebase.device.watchDeviceInfoConected(Matrix.deviceId, function (app, appId) {
+       if (!_.isUndefined(app) && !_.isUndefined(appId)) {
+         Matrix.localApps[appId] = app;
+
+         console.log('installing', appId);
+         Matrix.service.firebase.deviceapps.get(appId, function (app) {
+           debug('App data: ', app);
+           var appName = app.meta.shortName || app.meta.name;
+           var installOptions = {
+             url: app.meta.file || app.file, //TODO only use meta
+             name: appName,
+             version: app.meta.version || app.version, //TODO only use meta
+             id: appId
+           }
+
+
+
+           debug('Trying to install: ' + appName.yellow);
+           Matrix.service.manager.stop(appName, function (err) {
+             Matrix.service.manager.install(installOptions, function (err) {
+               debug('Finished index install');
+               console.log(appName, installOptions.version, 'installed from', installOptions.url);
+             });
+           });
+         })
+       } else {
+         debug('Empty app install triggered');
+       }
+     });
+
 
       cb();
     },
