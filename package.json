@@ -45,7 +45,7 @@
     "lodash": "^4.13.1",
     "matrix-app-config-helper": "https://github.com/matrix-io/matrix-app-config-helper/tarball/master",
     "matrix-eventfilter": "https://github.com/matrix-io/matrix-eventfilter/tarball/master",
-    "matrix-firebase": "https://github.com/matrix-io/matrix-firebase/tarball/master",
+    "matrix-firebase": "https://github.com/matrix-io/matrix-firebase/tarball/AA/change-status",
     "matrix-node-sdk": "https://github.com/matrix-io/matrix-node-sdk/tarball/master",
     "mic": "^2.1.1",
     "mocha": "^2.4.5",
