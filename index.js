@@ -368,6 +368,7 @@ var msg = [];
 
       //App install update
       Matrix.service.firebase.device.watchDeviceInfoConected(function ( status ) {
+        console.log('Conectado?????------------>', status)
       //  if (status === true) {
       //    Matrix.localApps[appId] = app;
        //
