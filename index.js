@@ -368,59 +368,29 @@ var msg = [];
 
       //App install update
       Matrix.service.firebase.device.watchDeviceInfoConected(function ( status ) {
-        console.log('Conectado?????------------>', status)
-      //  if (status === true) {
-      //    Matrix.localApps[appId] = app;
-       //
-      //    console.log('installing', appId);
-      //    Matrix.service.firebase.deviceapps.get(appId, function (app) {
-      //      debug('App data: ', app);
-      //      var appName = app.meta.shortName || app.meta.name;
-      //      var installOptions = {
-      //        url: app.meta.file || app.file, //TODO only use meta
-      //        name: appName,
-      //        version: app.meta.version || app.version, //TODO only use meta
-      //        id: appId
-      //      }
-       //
-      //      debug('Trying to install: ' + appName.yellow);
-      //      Matrix.service.manager.stop(appName, function (err) {
-      //        Matrix.service.manager.install(installOptions, function (err) {
-      //          debug('Finished index install');
-      //          console.log(appName, installOptions.version, 'installed from', installOptions.url);
-      //        });
-      //      });
-      //    })
-      //  }
+        console.log('status------------>', status);
+        if (status === true) {
+          Matrix.service.firebase.device.updateStatus(Matrix.deviceToken, {
+            error: function (err) {
+              debug('update status device failed');
+            },
+            finished: function () {
+              debug('update status device success');
+            },
+            start: function(){
+              debug('update status device start');
+            },
+            progress: function (msg) {
+              debug('update status device in progress');
+            }
+          });
+        }
      });
 
-     //App install update
+     //device disconect update status
      Matrix.service.firebase.device.watchDeviceOnDisconnect(Matrix.deviceToken, function (  ) {
-       console.log('desconectado')
-     //  if (status === true) {
-     //    Matrix.localApps[appId] = app;
-      //
-     //    console.log('installing', appId);
-     //    Matrix.service.firebase.deviceapps.get(appId, function (app) {
-     //      debug('App data: ', app);
-     //      var appName = app.meta.shortName || app.meta.name;
-     //      var installOptions = {
-     //        url: app.meta.file || app.file, //TODO only use meta
-     //        name: appName,
-     //        version: app.meta.version || app.version, //TODO only use meta
-     //        id: appId
-     //      }
-      //
-     //      debug('Trying to install: ' + appName.yellow);
-     //      Matrix.service.manager.stop(appName, function (err) {
-     //        Matrix.service.manager.install(installOptions, function (err) {
-     //          debug('Finished index install');
-     //          console.log(appName, installOptions.version, 'installed from', installOptions.url);
-     //        });
-     //      });
-     //    })
-     //  }
-    });
+       console.log('desconectado');
+     });
 
       cb();
     },
