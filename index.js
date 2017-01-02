@@ -365,6 +365,31 @@ var msg = [];
         });
       });
 
+      Matrix.service.firebase.device.watchDeviceInfoConected(function ( status ) {
+        console.log('status------------>', status);
+        if (status === true) {
+          Matrix.service.firebase.device.updateStatus(Matrix.deviceToken, {
+            error: function (err) {
+              debug('update status device failed');
+            },
+            finished: function () {
+              debug('update status device success');
+            },
+            start: function(){
+              debug('update status device start');
+            },
+            progress: function (msg) {
+              debug('update status device in progress');
+            }
+          });
+        }
+     });
+
+     //device disconect update status
+     Matrix.service.firebase.device.watchDeviceOnDisconnect(Matrix.deviceToken, function (  ) {
+       console.log('desconectado');
+     });
+
        //App install update
        Matrix.service.firebase.user.watchAppInstall(Matrix.deviceId, function (app, appId) {
         if (!_.isUndefined(app) && !_.isUndefined(appId)) {
