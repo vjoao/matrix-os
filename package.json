@@ -28,7 +28,9 @@
     "apphost-debug": "docker run -v `pwd`/apps:/apps -it matrix-apphost bash",
     "apphost-build": "docker build -t matrix-apphost -f Dockerfile-apphost-arm .",
     "upgrade": "npm upgrade matrix-node-sdk matrix-app-config-helper matrix-firebase matrix-eventfilter pi-wifi",
-    "watch": "nodemon --exec npm run sync"
+    "watch": "nodemon --exec npm run sync",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Sean Canton <sean.canton@admobilize.com>",
   "contributors": [
@@ -75,9 +77,11 @@
     "tinycolor2": "^1.3.0",
     "tree-kill": "^1.1.0",
     "unzip2": "^0.2.5",
-    "zmq": "^2.15.3"
+    "zmq": "^2.15.3",
+    "snyk": "^1.258.2"
   },
   "engines": {
     "node": ">=0.12.7 <=6.5"
-  }
+  },
+  "snyk": true
 }
