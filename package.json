@@ -51,7 +51,7 @@
     "jsonwebtoken": "^5.7.0",
     "line-by-line": "^0.1.4",
     "lodash": "^4.13.1",
-    "mathjs": "^3.8.1",
+    "mathjs": "^7.5.1",
     "matrix-app-config-helper": "https://github.com/matrix-io/matrix-app-config-helper/tarball/master",
     "matrix-eventfilter": "https://github.com/matrix-io/matrix-eventfilter/tarball/master",
     "matrix-firebase": "https://github.com/matrix-io/matrix-firebase/tarball/master",
