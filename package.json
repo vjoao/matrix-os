@@ -61,7 +61,7 @@
     "mv": "^2.1.1",
     "nedb": "https://github.com/matrix-io/nedb/tarball/master",
     "pi-wifi": "^1.1.2",
-    "portfinder": "^0.4.0",
+    "portfinder": "^1.0.25",
     "promise": "^7.1.1",
     "protobufjs": "^5.0.1",
     "ps-tree": "^1.0.0",
